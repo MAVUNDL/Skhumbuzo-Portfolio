@@ -8,7 +8,7 @@ def customize_profile():
                 rx.link(
                     rx.icon(
                         "flower",
-                        size=25,
+                        size=25,  # Ensure the size is a string with units
                     ),
                     href="/"
                 ),
@@ -26,6 +26,7 @@ def customize_profile():
                     rx.chakra.menu_button(
                         rx.icon(
                             "text",
+                            size=25,  # Ensure the size is a string with units
                         )
                     ),
                     rx.chakra.menu_list(
@@ -44,7 +45,10 @@ def customize_profile():
                         ),
                         rx.chakra.menu_divider(),
                         rx.chakra.menu_item(
-                            "Resume"
+                            rx.link(
+                                "Resume",
+                                href="/SKHUMBUZO_BEMBE_-_Software_Developer.pdf"
+                            )
                         )
                     )
                 ),
@@ -70,6 +74,7 @@ def contact(padding_: str):
                 rx.icon_button(
                     rx.icon(
                         tag="github",
+                        size=25,  # Ensure the size is a string with units
                     ),
                     variant="soft",
                     size="3",
@@ -82,6 +87,7 @@ def contact(padding_: str):
                 rx.icon_button(
                     rx.icon(
                         tag="linkedin",
+                        size=25,  # Ensure the size is a string with units
                     ),
                     variant="soft",
                     size="3",
@@ -90,17 +96,31 @@ def contact(padding_: str):
                 is_external=True,
                 button=True,
             ),
-            rx.link(
-                rx.icon_button(
-                    rx.icon(
-                        tag="mail",
-                    ),
-                    variant="soft",
-                    size="3",
+            rx.popover.root(
+                rx.popover.trigger(
+                    rx.icon_button(
+                        rx.icon(
+                            "message-circle",
+                            size=25,
+                        ),
+                        variant="soft",
+                        size="3",
+                    )
                 ),
-                href="sikhumbuzobembe184@gmail.com",
-                is_external=True,
-                button=True,
+                rx.popover.content(
+                    rx.flex(
+                        rx.text(
+                            "Whatsapp: +27 79 015 6664"
+                        ),
+                        rx.popover.close(
+                            rx.button(
+                                "close"
+                            )
+                        ),
+                        direction="column",
+                        spacing="3",
+                    )
+                )
             ),
             rx.divider(margin="0px"),
             width="100%",
@@ -108,4 +128,4 @@ def contact(padding_: str):
             padding_top="60px"
         ),
         padding_top=padding_
-    ),
+    )
